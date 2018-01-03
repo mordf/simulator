@@ -9,14 +9,12 @@ branches:
   - master
 install:
 - npm install
-# - npm install -g snyk
-# - snyk test || true
+- npm install snyk
 cache:
   directories:
   - node_modules
 script:
 - NODE_ENV=test npm run-script test-travis
-# after_script: "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
 after_success:
 - |
   if ([ "$TRAVIS_BRANCH" == "master" ] || [ ! -z "$TRAVIS_TAG" ]) && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
@@ -38,4 +36,12 @@ deploy:
   on:
     branch: master
 after_deploy:
-  - curl -X POST -H 'accept:application/json'  -H "authorization:token ${TRAVIS_API_TOKEN}" -H 'content-type:application/json' -H 'travis-api-version:3' -d "{\"request\":{\"branch\":\"master\",\"message\":\"triggered by ${TRAVIS_REPO_SLUG}\"}}" "https://api.travis-ci.org/repo/kube-HPC%2Frelease-manager/requests"
+- curl -X POST -H 'accept:application/json'  -H "authorization:token ${TRAVIS_API_TOKEN}"
+  -H 'content-type:application/json' -H 'travis-api-version:3' -d "{\"request\":{\"branch\":\"master\",\"message\":\"triggered
+  by ${TRAVIS_REPO_SLUG}\"}}" "https://api.travis-ci.org/repo/kube-HPC%2Frelease-manager/requests"
+env:
+  snyk:
+    secure: bFlm0fjDd7QggkOgzlRTM7lIhMPXSTQiXXY684f/SyDNfrcLTCP2HWXgY4Ah80Xq0MF9PoBMik+wI4yxUUxtw0bHTkKTMXiMoG7Tml1xKuvIQynpKRcaUHPTnlpuPn4HmlsBCj7n+nUB2taEC3d5H5Yv1OrPp7Y1Fv5V1zyNIYTJeYXTsije01/5Ugrnrwrf8u8YEf5oWhXM+x+G+kez26QxKdRra7xosB2yH9ApBDay070HYg3+bO/9pCmykhYwjZfXHgFu2fdfcPjjnu+vxyD4lv86bmZ289yrSzfJ5eBmC1JrkFZjdzdZPAnN7nE03qPthyo2DREAmgNXZu9e7bfg2+OPG0REUB3MLgSHBmnJ+hi5FqWE9xzzYvJOqTHV5MPr2/ZvQuotGtLYzZHn1M/dWp+nwyOeStXz31PkYfcv7PLiBYdcH4byMyshucI3L2C+uHLS0EmYJHQ0vKNsBkipiGD9/ize34DB/9e/Uqm+70TcRyoWv76wPcngTJ6d38EbpW4i0yY2BKtSWd7Pv3aO9RUhm48IT8e16o5a0gL9iyUwpIJy3kkRSVc81nQA9jA1mVP0UI6bMV1wkV2EEQZ4NoEVkGzQuLnYhQT4IqoqJeYjY9dp3+6F3DyALJ+AO6v7dCh14r0d8m8VLtCQh/CKekl1LndwNhitXKe6qEI=
+script:
+- snyk auth $SNYK_TOKEN
+- snyk test 
