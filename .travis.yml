@@ -14,7 +14,8 @@ cache:
   directories:
   - node_modules
 script:
-- NODE_ENV=test npm run-script test-travis
+- snyk auth $SNYK_TOKEN
+- snyk test
 after_success:
 - |
   if ([ "$TRAVIS_BRANCH" == "master" ] || [ ! -z "$TRAVIS_TAG" ]) && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
@@ -40,8 +41,5 @@ after_deploy:
   -H 'content-type:application/json' -H 'travis-api-version:3' -d "{\"request\":{\"branch\":\"master\",\"message\":\"triggered
   by ${TRAVIS_REPO_SLUG}\"}}" "https://api.travis-ci.org/repo/kube-HPC%2Frelease-manager/requests"
 env:
-  snyk:
-    secure: bFlm0fjDd7QggkOgzlRTM7lIhMPXSTQiXXY684f/SyDNfrcLTCP2HWXgY4Ah80Xq0MF9PoBMik+wI4yxUUxtw0bHTkKTMXiMoG7Tml1xKuvIQynpKRcaUHPTnlpuPn4HmlsBCj7n+nUB2taEC3d5H5Yv1OrPp7Y1Fv5V1zyNIYTJeYXTsije01/5Ugrnrwrf8u8YEf5oWhXM+x+G+kez26QxKdRra7xosB2yH9ApBDay070HYg3+bO/9pCmykhYwjZfXHgFu2fdfcPjjnu+vxyD4lv86bmZ289yrSzfJ5eBmC1JrkFZjdzdZPAnN7nE03qPthyo2DREAmgNXZu9e7bfg2+OPG0REUB3MLgSHBmnJ+hi5FqWE9xzzYvJOqTHV5MPr2/ZvQuotGtLYzZHn1M/dWp+nwyOeStXz31PkYfcv7PLiBYdcH4byMyshucI3L2C+uHLS0EmYJHQ0vKNsBkipiGD9/ize34DB/9e/Uqm+70TcRyoWv76wPcngTJ6d38EbpW4i0yY2BKtSWd7Pv3aO9RUhm48IT8e16o5a0gL9iyUwpIJy3kkRSVc81nQA9jA1mVP0UI6bMV1wkV2EEQZ4NoEVkGzQuLnYhQT4IqoqJeYjY9dp3+6F3DyALJ+AO6v7dCh14r0d8m8VLtCQh/CKekl1LndwNhitXKe6qEI=
-script:
-- snyk auth $SNYK_TOKEN
-- snyk test 
+  global:
+    secure: r0lXqqfoNgs5IlVWoJ3zoYyjd86+gInqzSRRxGnlPDoGv2wOIwGr0dxMq8mdmAiIVFkeXP1Aa95thZ/ZXeE4lErliZkc9QW+Yuv0K9r0cLt1oa/viu9L4XiECobQJR0TlsESORtw7jkVs2hb+Ks96iAaMEp1qYOdS7Vvavjge2r4ZfxtULjyXnSfdMydn+/kwYOXjhfEHhQb+XZlGBLHWhDMEedv4tKGi3SGx2qEqzmH8H9zhm43fEveNl21brA9ANCG/+8a1UbYwoAey7HB7S3zv2kR0XEADNeWITynxKnZ5VCrTZDZ6+N/9MFzxSbhQzktuQWyn0/0XwAiqMqS3QE0XTu2GR9LyluE7Ob2+Gp41zs3WVI+7+m9Fy5+AeTh1fZ5NkK3NLsoPXIrEbgm171KQRLSiTWNEG6wbCfh4wXyktg/iFQhaKmYNiQlc1wnyo3rBXhHq0e+QuQ0SY5rvEtinoKiiAGHT7Lo/QwYLBSZQC/SKT/xnUsnUcC5Z26ObK/Jsp3p9G38e24MlYYD/nlzTE7hjydnMnJlARnA3yFrm+/Z6xRBLK86V6nz272MmMZHbAW9ieStdtPPvo5JhWAMkkWqDb35SSFuCE1bjNzpxjhbv4iGn9hRpYNnrQ2HTzgUd5ag5g25GpKhXI1hWCWIfWz9Mbnmk5Cu8Mv1rYA=
