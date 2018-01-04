@@ -14,7 +14,7 @@ cache:
   directories:
   - node_modules
 script:
-- snyk config set endpoint=$SNYK_API
+- snyk config set endpoint=https://snykpoc.northeurope.cloudapp.azure.com
 - snyk auth $SNYK_TOKEN
 - snyk test
 - snyk monitor
