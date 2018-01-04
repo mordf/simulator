@@ -17,7 +17,6 @@ script:
 - snyk config set endpoint=$SNYK_API
 - snyk auth $SNYK_TOKEN
 - snyk test
-- snyk wizard
 - snyk monitor
 after_success:
 - |
