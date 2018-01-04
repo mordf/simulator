@@ -14,9 +14,11 @@ cache:
   directories:
   - node_modules
 script:
-- snyk config set endpoint=https://snykpoc.northeurope.cloudapp.azure.com/api
+- snyk config set endpoint=$SNYK_API
 - snyk auth $SNYK_TOKEN
 - snyk test
+- snyk wizard
+- snyk monitor
 after_success:
 - |
   if ([ "$TRAVIS_BRANCH" == "master" ] || [ ! -z "$TRAVIS_TAG" ]) && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
@@ -43,4 +45,5 @@ after_deploy:
   by ${TRAVIS_REPO_SLUG}\"}}" "https://api.travis-ci.org/repo/kube-HPC%2Frelease-manager/requests"
 env:
   global:
-    secure: r0lXqqfoNgs5IlVWoJ3zoYyjd86+gInqzSRRxGnlPDoGv2wOIwGr0dxMq8mdmAiIVFkeXP1Aa95thZ/ZXeE4lErliZkc9QW+Yuv0K9r0cLt1oa/viu9L4XiECobQJR0TlsESORtw7jkVs2hb+Ks96iAaMEp1qYOdS7Vvavjge2r4ZfxtULjyXnSfdMydn+/kwYOXjhfEHhQb+XZlGBLHWhDMEedv4tKGi3SGx2qEqzmH8H9zhm43fEveNl21brA9ANCG/+8a1UbYwoAey7HB7S3zv2kR0XEADNeWITynxKnZ5VCrTZDZ6+N/9MFzxSbhQzktuQWyn0/0XwAiqMqS3QE0XTu2GR9LyluE7Ob2+Gp41zs3WVI+7+m9Fy5+AeTh1fZ5NkK3NLsoPXIrEbgm171KQRLSiTWNEG6wbCfh4wXyktg/iFQhaKmYNiQlc1wnyo3rBXhHq0e+QuQ0SY5rvEtinoKiiAGHT7Lo/QwYLBSZQC/SKT/xnUsnUcC5Z26ObK/Jsp3p9G38e24MlYYD/nlzTE7hjydnMnJlARnA3yFrm+/Z6xRBLK86V6nz272MmMZHbAW9ieStdtPPvo5JhWAMkkWqDb35SSFuCE1bjNzpxjhbv4iGn9hRpYNnrQ2HTzgUd5ag5g25GpKhXI1hWCWIfWz9Mbnmk5Cu8Mv1rYA=
+  - secure: r0lXqqfoNgs5IlVWoJ3zoYyjd86+gInqzSRRxGnlPDoGv2wOIwGr0dxMq8mdmAiIVFkeXP1Aa95thZ/ZXeE4lErliZkc9QW+Yuv0K9r0cLt1oa/viu9L4XiECobQJR0TlsESORtw7jkVs2hb+Ks96iAaMEp1qYOdS7Vvavjge2r4ZfxtULjyXnSfdMydn+/kwYOXjhfEHhQb+XZlGBLHWhDMEedv4tKGi3SGx2qEqzmH8H9zhm43fEveNl21brA9ANCG/+8a1UbYwoAey7HB7S3zv2kR0XEADNeWITynxKnZ5VCrTZDZ6+N/9MFzxSbhQzktuQWyn0/0XwAiqMqS3QE0XTu2GR9LyluE7Ob2+Gp41zs3WVI+7+m9Fy5+AeTh1fZ5NkK3NLsoPXIrEbgm171KQRLSiTWNEG6wbCfh4wXyktg/iFQhaKmYNiQlc1wnyo3rBXhHq0e+QuQ0SY5rvEtinoKiiAGHT7Lo/QwYLBSZQC/SKT/xnUsnUcC5Z26ObK/Jsp3p9G38e24MlYYD/nlzTE7hjydnMnJlARnA3yFrm+/Z6xRBLK86V6nz272MmMZHbAW9ieStdtPPvo5JhWAMkkWqDb35SSFuCE1bjNzpxjhbv4iGn9hRpYNnrQ2HTzgUd5ag5g25GpKhXI1hWCWIfWz9Mbnmk5Cu8Mv1rYA=
+  - secure: FiTvuxq11RkvDaehH1tTWWWfdEjtM4ZvPKoUNTPJPVzZTy/VxDAzgQTwGYvveS9yj9DOKIO7FwDYlh+hpg87zSJpvSdZC5bHdKzeI2EqPDKFl//d1qLncOh2q7c6Km9j2KIrjwlQGPENn6bIRlYaagzmFL6OfYxyb2/afRVcHehauSLzzVwlE1yF4xDtQSZPrGDs5d7pXXYnZgrK40w2S1AWno0DJ5+34sG7GNPuFzZenHnQfLCx9r1tUQPyIO0re8gJblzsXg4HaBcCJGReRhnQg/XgXALIKd2P9zI8AATp8dxz6ZaC9YwADtrcYt1DAaHelZRPQ5wBoWd1g9oAGB1NCXAH+wuKdf1EtnmdM7AHM/JJZmQacC3RdKQXHllS9NRMZAe6y9agWitYseDcPQQO2EMkTLp/7Lj2zSeUdQLoKfhBJY+Nyv6Rp3VnpIULzINVutCzmLdGbYrpouT7DKNO0vd06h86onf0UGEGihvIs1mdqIgy25+IAAc3aam2lA6pGPMgbKe9CjNqum5J+cf5MD4PIQhItp70X055qJsEjWP8taj8bFomQ7WBB5cf/0lvoKVrDB5XysVLjN221IVd/nI7r3muROjuZq5bTs3+ys/le+cfC3iN9JHLf02yZ0fk0CYT69I3C9EV8VtCa765QAovXGwOSUjlfjnAfjs=
