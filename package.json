@@ -7,12 +7,10 @@
     "start": "webpack-dev-server --progress",
     "server": "node ./server/app.js",
     "builder": "cross-env NODE_ENV=production webpack -p --progress",
-    "test": "snyk test &&  babel-node ./app/tests/main.test.js --presets latest",
+    "test": "babel-node ./app/tests/main.test.js --presets latest",
     "lint": "eslint app",
     "test-travis": "echo \"No test specified\"",
-    "build": "./dockerfile/build.sh simulator",
-    "snyk-protect": "snyk protect",
-    "prepare": "npm run snyk-protect"
+    "build": "./dockerfile/build.sh simulator"
   },
   "theme": "./antd-theme.js",
   "repository": {
