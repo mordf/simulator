@@ -12,9 +12,10 @@ TAG_VER="${IMAGE_NAME}:${VERSION}"
 TAG_CUR="${IMAGE_NAME}:latest"
 
 docker build -t ${TAG_VER} -t ${TAG_CUR} -f ./dockerfile/Dockerfile .
+: <<'comment'
 if [ -v PRIVATE_REGISTRY ]
 then
   docker push ${TAG_VER}
   docker push ${TAG_CUR}
 fi
-
+comment
