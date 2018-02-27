@@ -1,5 +1,5 @@
 # Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
-version: v1.10.1
+version: v1.10.2
 # ignores vulnerabilities until expiry date; change duration by modifying expiry date
 ignore:
   'npm:parsejson:20170908':
@@ -11,3 +11,5 @@ patch:
   'npm:moment:20170905':
     - chart.js > moment:
         patched: '2018-01-04T09:44:27.630Z'
+    - chart.js > moment:
+        patched: '2018-02-27T07:17:23.090Z'
