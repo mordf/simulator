@@ -1,1 +1,1 @@
-checking git commit
+checking git commit user
