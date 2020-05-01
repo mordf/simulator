@@ -1,5 +1,5 @@
 # Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
-version: v1.10.1
+version: v1.14.1
 # ignores vulnerabilities until expiry date; change duration by modifying expiry date
 ignore:
   'npm:parsejson:20170908':
@@ -11,3 +11,26 @@ patch:
   'npm:moment:20170905':
     - chart.js > moment:
         patched: '2018-01-04T09:44:27.630Z'
+  SNYK-JS-LODASH-567746:
+    - lodash:
+        patched: '2020-05-01T01:11:07.075Z'
+    - react-chartjs-2 > lodash:
+        patched: '2020-05-01T01:11:07.075Z'
+    - react-dnd > lodash:
+        patched: '2020-05-01T01:11:07.075Z'
+    - react-dnd-html5-backend > lodash:
+        patched: '2020-05-01T01:11:07.075Z'
+    - react-redux > lodash:
+        patched: '2020-05-01T01:11:07.075Z'
+    - redux > lodash:
+        patched: '2020-05-01T01:11:07.075Z'
+    - redux-actions > lodash:
+        patched: '2020-05-01T01:11:07.075Z'
+    - antd > rc-form > lodash:
+        patched: '2020-05-01T01:11:07.075Z'
+    - react-dnd > dnd-core > lodash:
+        patched: '2020-05-01T01:11:07.075Z'
+    - antd > rc-editor-mention > rc-editor-core > lodash:
+        patched: '2020-05-01T01:11:07.075Z'
+    - react-dnd > dnd-core > redux > lodash:
+        patched: '2020-05-01T01:11:07.075Z'
