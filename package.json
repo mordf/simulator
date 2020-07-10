@@ -65,7 +65,7 @@
     "classnames": "^2.2.5",
     "dateformat": "^3.0.2",
     "hterm-umdjs": "^1.2.0",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.16",
     "moment": "^2.19.3",
     "react": "^15.4.2",
     "react-addons-css-transition-group": "^15.6.2",
