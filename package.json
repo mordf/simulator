@@ -61,7 +61,7 @@
   },
   "dependencies": {
     "antd": "^2.13.8",
-    "chart.js": "^2.7.1",
+    "chart.js": "^2.9.4",
     "classnames": "^2.2.5",
     "dateformat": "^3.0.2",
     "hterm-umdjs": "^1.2.0",
